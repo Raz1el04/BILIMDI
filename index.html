@@ -29,6 +29,11 @@
 /* Explicit marketing benchmark and methodological caveat */
 .benchmark-band{background:#eef4ff;border:1px solid #dce7f7;border-radius:20px;display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;gap:24px;margin-top:22px;padding:24px 28px}.benchmark-item{display:grid;gap:5px}.benchmark-item>span{font-size:11px;color:#7484a0;font-weight:800}.benchmark-item strong{font-size:31px;letter-spacing:-1px;color:#384e8d}.benchmark-item small{color:#8798ae;font-size:10px}.benchmark-divider{height:66px;background:#d4dff0}.benchmark-band>p{grid-column:1/-1;font-size:10px;color:#8394a9;line-height:1.7;margin:0}@media(max-width:720px){.benchmark-band{grid-template-columns:1fr;gap:14px;padding:20px}.benchmark-divider{height:1px;width:100%}}
 
+
+/* AITU schedule integration — self-contained visual styles */
+.aitu-snapshot{background:#e7f3ed;color:#457360;border:1px solid #cce6d8;font-size:11px;font-weight:900;padding:10px 14px;border-radius:19px;white-space:nowrap}
+.aitu-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding-bottom:22px}.aitu-toggle{display:flex;background:#eff2f8;padding:4px;border-radius:13px;gap:3px}.aitu-toggle button{border:0;border-radius:10px;background:transparent;color:#7888a2;padding:10px 13px;font-weight:800;font-size:12px}.aitu-toggle button.active{background:#536bd8;color:white}.aitu-toolbar input{padding:11px 14px;background:#f8fafc;border:1px solid #e0e7f0;border-radius:10px;min-width:190px;max-width:100%;font-size:12px}.aitu-lesson-row{display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start}.aitu-time{display:grid;gap:4px;text-align:right;padding-top:15px;color:#344767}.aitu-time b{font-size:15px}.aitu-time small{color:#a7b4c5;font-size:10px}.aitu-lesson{border:1px solid #e3eaf2;border-left:4px solid var(--aitu-accent,#7fa9ef);background:#f9fbfe;border-radius:15px;padding:15px 17px;min-width:0}.aitu-lesson-head{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:#8a9ab0;font-weight:900;letter-spacing:.4px}.aitu-lesson>strong{display:block;color:#1c3048;font-size:16px;margin:7px 0 11px;letter-spacing:-.3px;line-height:1.3}.aitu-lesson-room{background:#eaf1ff;color:#416eb9;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:800;display:block}.aitu-lesson-room.online{background:#e1f5ed;color:#218567}.aitu-lesson-meta{font-size:11px;color:#8190a2;margin-top:9px}.aitu-lesson-replacement{color:#d15467;font-size:11px;margin-top:8px;font-weight:800}.aitu-break{padding:9px 15px;background:#f1f5f8;border:1px dashed #bfcad7;color:#79879a;border-radius:10px;font-size:11px;margin-left:92px}.aitu-week-wrapper{overflow:auto}.aitu-week-grid{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));gap:14px}.aitu-week-day{border:1px solid #e7eaf0;background:#f8fafd;border-radius:16px;padding:13px;min-width:0}.aitu-week-day h4{font-size:12px;margin:0 0 10px;display:flex;justify-content:space-between;gap:10px}.aitu-week-day small{color:#97a4b6}.aitu-week-day>div{display:grid;gap:8px}.aitu-week-item{background:white;border:1px solid #e1e8f0;border-radius:11px;text-align:left;padding:10px;display:grid;gap:3px;cursor:pointer}.aitu-week-item:hover{border-color:#8cabf0}.aitu-week-item strong{font-size:11px;color:#304260}.aitu-week-item span{color:#8393a8;font-size:10px}.aitu-week-item small{font-size:10px;color:#597bd2}.schedule-events{gap:12px;min-height:120px}.day-selector button{padding:13px 4px}.day-selector button span{font-size:14px}
+@media(max-width:860px){.aitu-week-grid{grid-template-columns:repeat(2,minmax(150px,1fr))}}@media(max-width:560px){.aitu-week-grid{grid-template-columns:1fr}.aitu-toolbar input{width:100%}.aitu-lesson-row{grid-template-columns:51px 1fr;gap:7px}.aitu-lesson{padding:12px}.aitu-time b{font-size:12px}.aitu-time small{font-size:9px}.aitu-break{margin-left:58px}.schedule-card{padding:14px}.day-selector{gap:3px}.day-selector button{padding:9px 1px;border-radius:9px}.day-selector button b{font-size:9px}.day-selector button span{font-size:10px}.work-heading .aitu-snapshot{display:none}}
 </style>
   
 </head>
@@ -123,9 +128,13 @@
             </div>
           </section>
           <section class="work-panel" data-work-panel="schedule" hidden>
-            <div class="work-heading"><div><span class="eyebrow" data-i18n="scheduleEyebrow">МОЙ КАБИНЕТ / НЕДЕЛЯ</span><h1 data-i18n="scheduleTitle">Неделя под контролем.</h1><p data-i18n="scheduleSub">Пример расписания университетских занятий.</p></div></div>
-            <div class="white-panel schedule-card"><div class="day-selector" id="daySelector"></div><div class="schedule-content"><div class="schedule-section-title"><h3 id="dayTitle">Понедельник</h3><span class="demo-pill" data-i18n="demoSchedule">Пример расписания</span></div><div id="scheduleEvents" class="schedule-events"></div></div></div>
-            <div class="info-banner"><span>ⓘ</span><span data-i18n="scheduleDisclaimer">Настоящее расписание требует интеграции с университетом или личного редактирования. Сейчас показан пример.</span></div>
+            <div class="work-heading"><div><span class="eyebrow" data-i18n="scheduleEyebrow">МОЙ КАБИНЕТ / НЕДЕЛЯ</span><h1 data-i18n="scheduleTitle">Неделя под контролем.</h1><p data-i18n="scheduleSub">Занятия AITU по скриншотам (W10).</p></div><span class="aitu-snapshot">W10 · AITU</span></div>
+            <div class="white-panel schedule-card">
+              <div class="aitu-toolbar"><div class="aitu-toggle"><button type="button" class="active" data-schedule-mode="day" aria-pressed="true">По дням</button><button type="button" data-schedule-mode="week" aria-pressed="false">Вся неделя</button></div><input id="scheduleSearch" type="search" placeholder="Поиск предмета / аудитории" aria-label="Поиск по расписанию"></div>
+              <div id="scheduleDayPanel"><div class="day-selector" id="daySelector"></div><div class="schedule-content"><div class="schedule-section-title"><h3 id="dayTitle">Понедельник</h3><span class="demo-pill" data-i18n="demoSchedule">Скриншоты W10</span></div><div id="scheduleEvents" class="schedule-events"></div></div></div>
+              <div id="scheduleWeekPanel" hidden><div class="aitu-week-wrapper"><div class="aitu-week-grid" id="scheduleWeekGrid"></div></div></div>
+            </div>
+            <div class="info-banner"><span>ⓘ</span><span data-i18n="scheduleDisclaimer">Расписание перенесено из присланных скриншотов W10; это не живая синхронизация с AITU.</span></div>
           </section>
           <section class="work-panel" data-work-panel="focus" hidden>
             <div class="work-heading"><div><span class="eyebrow" data-i18n="focusEyebrow">МОЙ КАБИНЕТ / FOCUS</span><h1 data-i18n="focusTitle">Сейчас — только учёба.</h1><p data-i18n="focusSub">25 минут концентрации и короткий отдых.</p></div></div>
@@ -173,7 +182,7 @@ const fromHTML = {
     heroKicker:'ACADEMIC PROTOTYPE · KAZAKHSTAN',heroTitle:'A clearer day.<br/><span>A calmer mind.</span>',heroSubtitle:'Plan classes, manage deadlines and understand complex topics in one comfortable learning space.',tryPlanner:'Try for free',seeTutor:'Explore AI tutor',heroPoint1:'Core planner is always free',heroPoint2:'Русский · Қазақша · English',focusChip:'One day. One plan.',yourWorkspace:'MY SPACE',helloStudent:'Hello, student 👋',heroAppSub:'Small steps. Great progress.',progressWeek:'Weekly progress',doneTag:'Completed',upcomingTag:'Deadline approaching',floatBottom:'You can do it!',ribbonPlan:'Plan',ribbonLearn:'Learn',ribbonGrow:'Track progress',demoNote:'Academic student project demo',possibilities:'WHAT YOU CAN DO',featureTitle:'Everything for study.<br/><span>Without extra tabs.</span>',featureIntro:'Bilimdi combines daily planning with clear learning support.',featureTaskTitle:'No missed tasks',featureTaskBody:'Add deadlines, tick off tasks and see how far you have come.',goTasks:'Open tasks',featureAiTitle:'Complex things, simply explained',featureAiBody:'Explore explanations with examples and self-check questions.',goTutor:'Open tutor',featureFocusTitle:'Time to focus',featureFocusBody:'Study sessions, a weekly schedule and one clear plan for today.',goFocus:'Start focus session',startHere:'YOUR OWN SPACE',bottomTitle:'Start with one task.<br/><span>The rest will follow.</span>',bottomBody:'Build your study plan now. This demo requires no account and saves tasks only in this browser.',openDashboard:'Open my workspace',
     studentProfile:'Bilimdi Student',demoAccount:'Local demo profile',workspaceMenu:'YOUR WORKSPACE',overview:'Overview',tasks:'My tasks',schedule:'Schedule',focus:'Focus session',sidebarMotivation:'Do a little today. Tomorrow will be easier.',sidebarLocal:'All tasks are saved in your browser.',workspaceEyebrow:'MY WORKSPACE / OVERVIEW',goodDay:'Have a great study day! ✳',addTask:'Add task',remain:'Tasks left',statRemainingFoot:'One step at a time',completed:'Completed',statCompletedFoot:'Every check counts',soon:'Next deadline',statNextFoot:'Keep what matters in view',firstPriority:'TODAY’S PRIORITIES',yourTasks:'Your tasks',seeAll:'View all',studentProgress:'YOUR PROGRESS',doneOfTasks:'tasks completed',progressMessage:'Go at your own pace — every step matters.',onePlace:'One place for it all',onePlaceText:'Plan, schedule, learning explanations and focus sessions.',startLearning:'Explore learning',
     tasksEyebrow:'MY WORKSPACE / PLAN',tasksTitle:'Make room for everything.',tasksSub:'Add a task, choose a subject and a due date.',resetExample:'Restore examples',taskLabel:'What needs to be done?',taskPlaceholder:'e.g. Prepare a presentation',courseLabel:'Course',dateLabel:'Deadline',add:'Add',allMyTasks:'Your task list',filterAll:'All',filterOpen:'In progress',filterDone:'Done',localSaveNote:'Tasks are stored locally. Cloud sync requires a backend.',
-    scheduleEyebrow:'MY WORKSPACE / WEEK',scheduleTitle:'Your week, organised.',scheduleSub:'Example university class schedule.',demoSchedule:'Example schedule',scheduleDisclaimer:'Real class schedules require university integration or manual editing. This is a sample.',
+    scheduleEyebrow:'MY WORKSPACE / WEEK',scheduleTitle:'Your week, organised.',scheduleSub:'AITU class timetable from your W10 screenshots.',demoSchedule:'W10 screenshot snapshot',scheduleDisclaimer:'Timetable transcribed from W10 screenshots. Not connected to live AITU updates.',
     focusEyebrow:'MY WORKSPACE / FOCUS',focusTitle:'Right now — just study.',focusSub:'25 minutes of focus followed by a short break.',focusSession:'FOCUS SESSION',start:'Start',pause:'Pause',reset:'Reset',focusHowTitle:'How does focus work?',focusHowBody:'Close distracting tabs, pick a task and work until the timer finishes. Take a short break after 25 minutes.',minuteWork:'min · study',minuteBreak:'min · break',focusHint:'You do not have to do it all now. Do the next important thing.',
     tutorKicker:'BILIMDI · LEARNING LAB',tutorTitle:'Understand, not memorize.<br/><span>Learn the why.</span>',tutorSubtitle:'Choose a topic, read a clear explanation, and check yourself.',tutorDisclosure:'Demo: prewritten explanations, no AI API connected',topicML:'Machine Learning',topicStats:'Statistics',topicMath:'Mathematics',studyAssistant:'Learning assistant',safeStudy:'Explains reasoning; does not complete assignments for you',letsUnderstand:'LET’S UNDERSTAND IT',simpleExample:'EXAMPLE',checkYourself:'CHECK YOURSELF',chooseTopicAbove:'Choose one of the topics above to see an example...',chatDisclaimer:'A true open-ended conversation would require a secure server connection to an AI model.',
     internalBenchmark:'Bilimdi: planned paying-user share',internalBenchmarkDesc:'715 active paying users / 20,000 registrations by Year-1 end',externalBenchmark:'External reference (RevenueCat, 2026)',externalBenchmarkDesc:'Median freemium conversion within 35 days of install',benchmarkCaution:'These are different denominators and time windows, not directly comparable. The external reference was discussed in Assignment 2.',businessKicker:'BILIMDI LLP / FOUNDER VIEW',businessTitle:'Clear metrics. Better decisions.',businessSubtitle:'Management panel based on Assignments 5–6. All Month 9 values are simulated for the defense, not actual sales.',businessSimulated:'SIMULATED · ACADEMIC PROJECT',equity:'Founders’ equity',equityFoot:'Financing, not revenue',revenueY1:'Year-1 receipts',revenueFoot:'Forecast subscriptions',cashY1:'Year-1 closing cash',cashFoot:'Base-case forecast',breakeven:'Operating break-even',breakevenFoot:'Annual sales, estimate',month9Title:'Monitoring · Month 9',kpiExplain:'Change simulated values to recalculate status and deviation.',resetKpi:'Reset KPIs',goal:'Target',simFact:'Simulated',deviation:'Deviation',status:'Status',kpiFooter:'Critical values are RED; support SLA of 82% is RED under the strengthened escalation rule.',priorityActions:'Priority actions',financialScenario:'Cash resilience',scenarioSub:'Move the slider to see how sales affect cash.',salesAchieved:'Sales achieved vs forecast',forecastCash:'Projected Year-1 closing cash',calcHow:'What is included?',calcBody:'₸9M equity, subscriptions received, fixed costs, proportional AI spending, assumed 3% tax and ₸600k equipment.',revenueScenario:'Receipts',operatingScenario:'Operating payments',taxScenario:'Assumed tax',modelNote:'Academic model, not accounting statements. Tax applicability needs legal verification.',
@@ -242,18 +251,83 @@ $('#allTasks').addEventListener('change',listChange);$('#previewTaskList').addEv
 $('#allTasks').addEventListener('click',e=>{const btn=e.target.closest('[data-delete]');if(!btn)return;tasks=tasks.filter(x=>x.id!==btn.dataset.delete);saveTasks();renderTasks();renderOverview();toast(locale==='en'?'Task removed.':'Задача удалена.')});
 $$('[data-task-filter]').forEach(b=>b.addEventListener('click',()=>{filter=b.dataset.taskFilter;$$('[data-task-filter]').forEach(x=>x.classList.toggle('selected',x===b));renderTasks()}));
 $('#resetTasks').addEventListener('click',()=>{tasks=defaultTasks();saveTasks();renderTasks();renderOverview();toast(locale==='en'?'Demo tasks restored.':locale==='kk'?'Үлгі тапсырмалар қалпына келді.':'Примеры восстановлены.')});
-// Sample weekly timetable (not imported from a university).
-const week=[
- [{time:'09:00 – 10:20',title:'Machine Learning',place:'Lecture · AITU, C1'},{time:'11:00 – 12:20',title:'Statistics',place:'Seminar · Room 421'},{time:'14:00 – 15:20',title:'Project Management',place:'Practice · Room 310'}],
- [{time:'10:00 – 11:20',title:'English',place:'Seminar · Room 204'},{time:'13:00 – 14:20',title:'Data Visualization',place:'Practice · Lab 110'}],
- [{time:'09:00 – 10:20',title:'Deep Learning',place:'Lecture · Room 409'},{time:'12:00 – 13:20',title:'Deep Learning Lab',place:'Practice · Lab 116'}],
- [{time:'11:00 – 12:20',title:'Entrepreneurship',place:'Workshop · Room 402'},{time:'15:00 – 16:20',title:'Research Methods',place:'Seminar · Room 405'}],
- [{time:'10:00 – 11:20',title:'Data Analytics',place:'Lecture · Room 411'},{time:'13:00 – 14:20',title:'Machine Learning Lab',place:'Practice · Lab 118'}],
- [],[]
+// AITU Week 10 schedule transcribed from the supplied screenshots. Static snapshot, not an AITU API.
+const aituCourses = {
+ BIO:{name:'Introduction to bioinformatics',short:'Bioinformatics',color:'#4bb4fc'},
+ DL:{name:'Deep Learning',short:'Deep Learning',color:'#af97f1'},
+ PM:{name:'Project Management',short:'Project Management',color:'#ff91a3'},
+ ENT:{name:'Entrepreneurship',short:'Entrepreneurship',color:'#f4bd67'},
+ AML:{name:'Applied Machine Learning',short:'Applied ML',color:'#69d1ad'},
+ RMT:{name:'Research Methods and Tools',short:'Research Methods',color:'#8faefb'}
+};
+const aituDays=['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
+const aituShortDays=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+// Указаны именно группировки из скриншотов: два академических часа одного предмета — один блок.
+const aituSchedule=[
+ [
+  {start:0,count:2,course:'BIO',code:'IB53-EN-L1',type:'Лекция',room:'105L',campus:'Korkem Campus',teacher:'Tursynkozha A.'},
+  {start:4,count:2,course:'DL',code:'DL53-EN-P60',type:'Практика',room:'C1.3.324 SAIDS',campus:'Main Campus',teacher:'Khalmyrza B.'},
+  {start:6,count:2,course:'PM',code:'PM42-EN-P26',type:'Практика',room:'C1.3.366L',campus:'Main Campus',teacher:'Rakhimbekova A.'}
+ ],
+ [
+  {start:6,count:2,course:'ENT',code:'ENT51-EN-P293',type:'Практика',room:'C1.2.249L',campus:'Main Campus',teacher:'Garafutdinova E.'},
+  {start:8,count:2,course:'BIO',code:'IB53-EN-P1',type:'Практика',room:'C1.3.322',campus:'Main Campus',teacher:'Tursynkozha A.'}
+ ],
+ [
+  {start:0,count:2,course:'AML',code:'AML53-EN-L1',type:'Лекция',room:'101L',campus:'Korkem Campus',teacher:'Karatay A.'},
+  {start:4,count:2,course:'AML',code:'AML53-EN-P30',type:'Практика',room:'C1.3.324 SAIDS',campus:'Main Campus',teacher:'Karatay A.'},
+  {start:6,count:1,course:'RMT',code:'RMT53-EN-P661',type:'Практика',room:'C1.1.252L',campus:'Main Campus',teacher:'Zhalgas A.'},
+  {start:7,count:2,course:'RMT',code:'RMT53-EN-P661',type:'Практика',room:'C1.1.233P',campus:'Main Campus',teacher:'Zhalgas A.'}
+ ],
+ [
+  {start:0,count:2,course:'PM',code:'PM42-EN-L1',type:'Лекция',room:'Онлайн',campus:'Online',teacher:'Ibadildin N.'}
+ ],
+ [
+  {start:0,count:2,course:'DL',code:'DL53-EN-L5',type:'Лекция',room:'205L',campus:'Korkem Campus',teacher:'Bazarkhanova A.'},
+  {start:4,count:2,course:'ENT',code:'ENT51-EN-L41',type:'Лекция',room:'C1.1.334L',campus:'Main Campus',teacher:'Salykova L.',replacement:'Mukhanova G.'},
+  {start:6,count:1,course:'ENT',code:'ENT51-EN-P293',type:'Практика',room:'C1.3.254L',campus:'Main Campus',teacher:'Garafutdinova E.'},
+  {start:7,count:1,course:'AML',code:'AML53-EN-P30',type:'Практика',room:'C1.2.239K',campus:'Main Campus',teacher:'Karatay A.'},
+  {start:8,count:1,course:'BIO',code:'IB53-EN-P1',type:'Практика',room:'C1.3.322',campus:'Main Campus',teacher:'Tursynkozha A.'}
+ ],
+ [
+  {start:0,count:2,course:'RMT',code:'RMT53-EN-L13',type:'Лекция',room:'301L',campus:'Korkem Campus',teacher:'Zhalgas A.'},
+  {start:4,count:1,course:'DL',code:'DL53-EN-P60',type:'Практика',room:'C1.1.242K',campus:'Main Campus',teacher:'Khalmyrza B.'}
+ ],
+ []
 ];
-let dayStart=new Date();dayStart.setHours(12,0,0,0);const dayOfWeek=(dayStart.getDay()+6)%7;dayStart.setDate(dayStart.getDate()-dayOfWeek);dayIndex=dayOfWeek;
-function renderSchedule(){const names={ru:['Пн','Вт','Ср','Чт','Пт','Сб','Вс'],kk:['Дс','Сс','Ср','Бс','Жм','Сб','Жс'],en:['Mon','Tue','Wed','Thu','Fri','Sat','Sun']};$('#daySelector').innerHTML=names[locale].map((label,i)=>{const d=new Date(dayStart);d.setDate(d.getDate()+i);return `<button type="button" class="${dayIndex===i?'active':''}" data-day="${i}" aria-label="${label}"><b>${label}</b><span>${d.getDate()}</span></button>`}).join('');const d=new Date(dayStart);d.setDate(d.getDate()+dayIndex);$('#dayTitle').textContent=d.toLocaleDateString(localeCodes[locale],{weekday:'long',day:'numeric',month:'long'});$('#scheduleEvents').innerHTML=week[dayIndex].length?week[dayIndex].map(ev=>`<div class="event-card"><span class="event-time">${esc(ev.time)}</span><span class="event-marker"></span><div><h4>${esc(ev.title)}</h4><p>${esc(ev.place)}</p></div></div>`).join(''):`<div class="no-event">${locale==='en'?'No sample classes today.':locale==='kk'?'Бүгін үлгі сабақтар жоқ.':'Сегодня в примере занятий нет.'}</div>`}
-$('#daySelector').addEventListener('click',e=>{const btn=e.target.closest('[data-day]');if(btn){dayIndex=Number(btn.dataset.day);renderSchedule()}});
+
+const aituLocaleDays={
+ ru:['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],
+ kk:['Дүйсенбі','Сейсенбі','Сәрсенбі','Бейсенбі','Жұма','Сенбі','Жексенбі'],
+ en:['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']};
+const aituLocaleShort={ru:['Пн','Вт','Ср','Чт','Пт','Сб','Вс'],kk:['Дс','Сс','Ср','Бс','Жм','Сб','Жс'],en:['Mon','Tue','Wed','Thu','Fri','Sat','Sun']};
+const aituLabels={
+ ru:{lecture:'Лекция',practice:'Практика',online:'Онлайн',teacher:'Преподаватель',replacement:'Замена',periods:'занятий',break:'Перерыв',hours:'часов'},
+ kk:{lecture:'Дәріс',practice:'Практика',online:'Онлайн',teacher:'Оқытушы',replacement:'Ауыстыру',periods:'сабақ',break:'Үзіліс',hours:'сағат'},
+ en:{lecture:'Lecture',practice:'Practical',online:'Online',teacher:'Lecturer',replacement:'Substitute',periods:'periods',break:'Break',hours:'hours'}};
+let scheduleMode='day';
+function aituTime(hourIdx,ending=false){return String(10+hourIdx).padStart(2,'0')+':'+(ending?'50':'00')}
+function aituRange(s){return aituTime(s.start)+'–'+aituTime(s.start+s.count-1,true)}
+function aituMatches(i){const query=$('#scheduleSearch').value.trim().toLowerCase();return aituSchedule[i].filter(s=>!query||[aituCourses[s.course].name,s.code,s.teacher,s.room,s.campus,s.replacement||''].join(' ').toLowerCase().includes(query))}
+function aituCard(s,compact=false){const c=aituCourses[s.course],label=aituLabels[locale],type=s.type==='Лекция'?label.lecture:label.practice;
+ return `<article class="aitu-lesson ${compact?'compact':''}" style="--aitu-accent:${c.color}"><div class="aitu-lesson-head"><span>${esc(s.code)}</span><span>${type}</span></div><strong>${esc(c.name)}</strong><div class="aitu-lesson-room ${s.campus==='Online'?'online':''}">${s.campus==='Online'?'◉ '+label.online:'⌖ '+esc(s.room)+' ('+esc(s.campus)+')'}</div><div class="aitu-lesson-meta">${label.teacher}: ${esc(s.teacher)} · ${aituRange(s)}</div>${s.replacement?`<div class="aitu-lesson-replacement">↪ ${label.replacement}: ${esc(s.replacement)}</div>`:''}</article>`}
+function renderSchedule(){const names=aituLocaleShort[locale],labels=aituLabels[locale];
+ $('#daySelector').innerHTML=names.map((name,i)=>`<button type="button" class="${dayIndex===i?'active':''}" data-day="${i}" aria-label="${aituLocaleDays[locale][i]}"><b>${name}</b><span>${aituSchedule[i].reduce((t,s)=>t+s.count,0)}</span></button>`).join('');
+ $('#dayTitle').textContent=aituLocaleDays[locale][dayIndex]+' · '+aituSchedule[dayIndex].reduce((t,s)=>t+s.count,0)+' '+labels.periods;
+ let prev=null;
+ $('#scheduleEvents').innerHTML=aituMatches(dayIndex).map(s=>{
+  let gap=''; if(prev!==null && s.start>prev){let mins=(s.start-prev)*60+10;if(mins>=60)gap=`<div class="aitu-break">${labels.break} · ${Math.floor(mins/60)} ${labels.hours} ${mins%60} мин · ${aituTime(prev-1,true)}–${aituTime(s.start)}</div>`}
+  prev=s.start+s.count;
+  return gap+`<div class="aitu-lesson-row"><span class="aitu-time"><b>${aituTime(s.start)}</b><small>${aituTime(s.start+s.count-1,true)}</small></span>${aituCard(s)}</div>`;
+ }).join('') || `<div class="no-event">${locale==='en'?'No lessons match this search.':locale==='kk'?'Сабақ табылмады.':'Занятий не найдено.'}</div>`;
+ $('#scheduleWeekGrid').innerHTML=aituSchedule.slice(0,6).map((arr,i)=>`<section class="aitu-week-day"><h4>${aituLocaleDays[locale][i]} <small>${arr.reduce((n,s)=>n+s.count,0)}</small></h4><div>${aituMatches(i).map(s=>`<button type="button" class="aitu-week-item" data-open-schedule-day="${i}"><small>${aituRange(s)}</small><strong>${esc(aituCourses[s.course].name)}</strong><span>${esc(s.room)}</span></button>`).join('')}</div></section>`).join('');
+ $$('#scheduleDayPanel').forEach(e=>e.hidden=scheduleMode!=='day');$('#scheduleWeekPanel').hidden=scheduleMode!=='week';
+ $$('[data-schedule-mode]').forEach(b=>{b.classList.toggle('active',b.dataset.scheduleMode===scheduleMode);b.setAttribute('aria-pressed',b.dataset.scheduleMode===scheduleMode?'true':'false')});
+}
+$('#daySelector').addEventListener('click',e=>{const b=e.target.closest('[data-day]');if(!b)return;dayIndex=Number(b.dataset.day);renderSchedule()});
+$('#scheduleSearch').addEventListener('input',renderSchedule);
+$$('[data-schedule-mode]').forEach(b=>b.addEventListener('click',()=>{scheduleMode=b.dataset.scheduleMode;renderSchedule()}));
+$('#scheduleWeekGrid').addEventListener('click',e=>{const b=e.target.closest('[data-open-schedule-day]');if(!b)return;dayIndex=Number(b.dataset.openScheduleDay);scheduleMode='day';renderSchedule()});
 // Focus session timer: runs only in this browser tab, no fake session tracking.
 let timerMode='focus',remainingSeconds=25*60,timerId=null,endAt=0;
 const totalSeconds=()=>timerMode==='focus'?25*60:5*60;
